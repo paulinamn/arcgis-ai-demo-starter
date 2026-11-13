@@ -45,8 +45,9 @@ In ArcGIS Online: open the web map item → **Settings** → **Manage AI vector
 embeddings** → **Generate Embeddings**. You need write access to the item. See the
 [AI web map setup docs](https://developers.arcgis.com/javascript/latest/agentic-apps/ai-webmap-setup/#embeddings).
 
-The default `WEBMAP_ITEM_ID` is a public, embeddings-enabled map so the template
-runs before you have one of your own.
+The default `WEBMAP_ITEM_ID` points at "Demo Starter Base Map (do not delete)" — a
+public, embeddings-enabled map that exists purely to give this template a working
+start, with no project layers on it. Replace it with your own demo's web map.
 
 ## What's in here
 

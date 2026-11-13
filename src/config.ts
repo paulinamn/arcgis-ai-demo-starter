@@ -22,10 +22,11 @@ const APP_SUBTITLE = "Replace this with your team or project name";
  * the item. See:
  * https://developers.arcgis.com/javascript/latest/agentic-apps/ai-webmap-setup/#embeddings
  *
- * The default below is a public, embeddings-enabled map so the template runs
- * immediately. Replace it with your own once you have one.
+ * The default below is "Demo Starter Base Map (do not delete)" — a public,
+ * embeddings-enabled map that exists purely to give this template a working start.
+ * It carries no project layers on purpose. Replace it with your own demo's web map.
  */
-const WEBMAP_ITEM_ID = "12d6ca0d352544e3bcba84f82210ac0c";
+const WEBMAP_ITEM_ID = "48a4e4dc099b479298cebd524083c5b9";
 
 /** Assistant panel copy. */
 const ASSISTANT_HEADING = "Demo Assistant";
