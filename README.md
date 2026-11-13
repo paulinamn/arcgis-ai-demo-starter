@@ -7,6 +7,10 @@ and build your demo on top instead of rebuilding the plumbing.
 It also carries the conventions that let an agent work on the project without
 being re-briefed every session (`AGENTS.md`, `docs/agents/`, `docs/adr/`).
 
+> **New here?** [WORKFLOW.md](./WORKFLOW.md) explains the approach this template is
+> built around — how to get a demo in front of a customer fast and still be able to
+> change it afterward.
+
 ## Quick start
 
 ```powershell
@@ -55,6 +59,7 @@ runs before you have one of your own.
 | `src/index.css` | Layout for the shell; theming via Calcite custom properties |
 | `vite.config.ts` | Two non-obvious fixes — see below |
 | `AGENTS.md`, `docs/agents/` | Conventions the agent reads every session |
+| `WORKFLOW.md` | The approach: why this exists and how to use it |
 | `docs/adr/` | Decisions with reasons |
 | `GLOSSARY.md` | One name per concept |
 | `.scratch/` | Specs and tickets as markdown |
