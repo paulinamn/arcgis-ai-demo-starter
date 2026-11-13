@@ -1,0 +1,208 @@
+/* =============================================
+   SHELL LAYOUT
+   Header across the top; below it a side panel, the map, and the assistant.
+   Swap the colours; keep the sizing rules — they are what stop the map and the
+   assistant collapsing to zero height inside flex containers.
+   ============================================= */
+
+:root {
+  --brand: #2d6a4f;
+  --brand-dark: #1b4332;
+  --brand-light: #74c69d;
+  --page-bg: #f5f4ef;
+  --panel-bg: #ffffff;
+  --border: #d9d6cc;
+  --text: #1f2421;
+  --text-muted: #5c635e;
+}
+
+#root,
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: var(--page-bg);
+  color: var(--text);
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+/* Header */
+.app-header {
+  background: var(--brand-dark);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  flex: 0 0 auto;
+}
+
+.app-header-brand h1 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.app-header-brand p {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/*
+  min-height: 0 is load-bearing. Without it a flex child refuses to shrink below
+  its content height and the map is pushed off the bottom of the window.
+*/
+.app-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.app-main {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* =============================================
+   SIDE PANEL
+   ============================================= */
+.side-panel {
+  width: 320px;
+  flex: 0 0 320px;
+  background: var(--panel-bg);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.side-panel-title {
+  background: var(--brand-dark);
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.6rem 1rem;
+}
+
+.side-panel-body {
+  padding: 1rem;
+}
+
+.side-panel-body h2 {
+  font-size: 0.95rem;
+  margin: 0 0 0.5rem;
+}
+
+.side-panel-value {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.side-panel-meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.side-panel-empty {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* =============================================
+   MAP
+   ============================================= */
+.map-canvas {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+
+.map-canvas arcgis-map {
+  width: 100%;
+  height: 100%;
+}
+
+/* =============================================
+   ASSISTANT DOCK
+   ============================================= */
+.assistant-dock {
+  position: relative;
+  width: 380px;
+  flex: 0 0 380px;
+  border-left: 1px solid var(--border);
+  background: var(--panel-bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  transition: flex-basis 0.2s ease, width 0.2s ease;
+}
+
+.assistant-dock.is-collapsed {
+  width: 0;
+  flex-basis: 0;
+  border-left: none;
+}
+
+.assistant-dock.is-collapsed arcgis-assistant {
+  display: none;
+}
+
+/* Theme the assistant with Calcite custom properties rather than overriding
+   its internals, which are shadow DOM and will change between releases. */
+.assistant-dock arcgis-assistant {
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+  --calcite-color-brand: var(--brand);
+  --calcite-color-brand-hover: var(--brand-dark);
+  --calcite-color-brand-press: var(--brand-dark);
+  --calcite-color-brand-focus: var(--brand);
+  --calcite-color-focus: var(--brand-light);
+  --calcite-color-text-link: var(--brand);
+}
+
+/* Collapse tab on the dock's left edge, vertically centred. */
+.assistant-toggle {
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 52px;
+  border: 1px solid var(--border);
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  background: var(--brand-dark);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 2;
+}
+
+.assistant-toggle:hover {
+  background: var(--brand);
+}
+
+@media (max-width: 1100px) {
+  .side-panel {
+    display: none;
+  }
+}
